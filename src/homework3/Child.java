@@ -3,7 +3,11 @@ package homework3;
 import homework3.interfaces.IHuman;
 
 public final class Child extends Person implements IHuman {
-    private final int age = 7;
+    static{
+        final int childAge = 7;
+        String favouriteFood = "Pizza";
+    }
+    public static String favouriteDrink = "Grape Juice";
 
     public Child(){
 
@@ -13,10 +17,6 @@ public final class Child extends Person implements IHuman {
         super(firstName, lastName);
     }
 
-    @Override
-    public int getAge() {
-        return age;
-    }
 
     @Override
     public void eat() {
@@ -31,5 +31,9 @@ public final class Child extends Person implements IHuman {
     //Make a final method does not change anything because anyway this class can't be inherited
     final void sayHello(){
         System.out.println("Hellooooooo!");
+    }
+
+    public static void sayFAvouriteGame(){
+        System.out.println("My favourite game is Minecraft");
     }
 }

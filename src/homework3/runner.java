@@ -21,6 +21,7 @@ public class runner {
         professor.eat();
         child.eat();
 
-        System.out.println(child.getAge());
+        Child.sayFAvouriteGame();
+        System.out.println(child.favouriteDrink);
     }
 }
