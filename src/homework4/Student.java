@@ -38,6 +38,17 @@ public class Student extends Person implements IStudent{
         this.collegeName = collegeName;
         this.careerName = careerName;
     }
+    public void studyHoursInADay(int hours){
+        if(hours > 24){
+            throw new ArithmeticException("This is impossible, a day only have 24 hours");
+        }else{
+            if(hours > 15){
+                throw new ArithmeticException("Chill out, take a rest for your sanity");
+            }else{
+                System.out.println("Sounds great! Keep on it!");
+            }
+        }
+    }
 
     //Overriding Object functions
     @Override

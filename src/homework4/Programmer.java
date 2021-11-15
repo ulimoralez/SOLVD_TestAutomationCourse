@@ -33,7 +33,11 @@ public class Programmer extends Person implements IProgrammer{
         return yearsOfExperience;
     }
     public void setYearsOfExperience(int yearsOfExperience) {
-        this.yearsOfExperience = yearsOfExperience;
+        if(yearsOfExperience > 70){
+            throw new ArithmeticException("Impossible to set that quantity - Much more than human posibilities");
+        }else {
+            this.yearsOfExperience = yearsOfExperience;
+        }
     }
     public String getFavoriteLanguage() {
         return favoriteLanguage;
@@ -56,11 +60,16 @@ public class Programmer extends Person implements IProgrammer{
     }
     public void changeInfo(String firstName, String lastName, int yearsOfExperience, String favoriteLanguage,
                            String favoriteOS){
-        super.setFirstName(firstName);
-        super.setLastName(lastName);
-        this.yearsOfExperience = yearsOfExperience;
-        this.favoriteLanguage = favoriteLanguage;
-        this.favoriteOS = favoriteOS;
+        try{
+            super.setFirstName(firstName);
+            super.setLastName(lastName);
+            this.yearsOfExperience = yearsOfExperience;
+            this.favoriteLanguage = favoriteLanguage;
+            this.favoriteOS = favoriteOS;
+        }catch (Exception e){
+            System.out.println("Error in Programmer->ChangeInfo: "+e);
+        }
+
     }
 
     //Overriding Object methods

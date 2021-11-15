@@ -109,7 +109,12 @@ public class Person implements IPerson, IHuman {
     //Overriding Methods of the interface
     @Override
     public void sayHello(String firstName) {
-        System.out.println("Hello! My name is: "+firstName);
+        try {
+            System.out.println("Hello! My name is: "+firstName);
+        }catch (Exception e){
+            System.out.println("Error in Person->sayHello: "+e);
+        }
+
     }
     @Override
     public void eat() {

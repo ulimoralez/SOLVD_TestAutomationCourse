@@ -25,7 +25,17 @@ public class Professor extends Person implements IProfessor {
         this.studyArea = studyArea;
     }
 
-    //Overriding interface methods
+    //Overriding interface and super class methods
+
+    @Override
+    public void sayHello(String firstName) {
+        try {
+            System.out.println("Hello! My name is: "+firstName);
+        }catch (Exception e){
+            System.out.println("Error in Professor->sayHello: "+e);
+        }
+    }
+
     @Override
     public void drink() {
         System.out.println("I like to drink tea");
