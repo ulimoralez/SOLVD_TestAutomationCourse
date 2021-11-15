@@ -1,13 +1,28 @@
 package homework4;
 
-import homework3.interfaces.IHuman;
 import homework3.interfaces.IStudent;
 
+import java.io.IOException;
 import java.util.Objects;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Student extends Person implements IStudent{
     private String collegeName;
     private String careerName;
+    public static Logger logger = Logger.getLogger(Student.class.getName());
+    public FileHandler fh;
+
+    {
+        try {
+            fh = new FileHandler("src/homework4/readText/Logs.txt");
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     //Constructors
     public Student(String firstName, String lastName, String gender, int age, String collegeName, String careerName) {
@@ -45,7 +60,7 @@ public class Student extends Person implements IStudent{
             if(hours > 15){
                 throw new ArithmeticException("Chill out, take a rest for your sanity");
             }else{
-                System.out.println("Sounds great! Keep on it!");
+                logger.info("Sounds great! Keep on it!");
             }
         }
     }
@@ -78,10 +93,10 @@ public class Student extends Person implements IStudent{
     }
     @Override
     public void eat() {
-        System.out.println("I eat when I'm not sleeping");
+        logger.info("I eat when I'm not sleeping");
     }
     @Override
     public void drink() {
-        System.out.println("I love drink coffee");
+        logger.info("I love drink coffee");
     }
 }

@@ -1,14 +1,29 @@
 package homework4;
 
-import homework3.interfaces.IHuman;
 import homework3.interfaces.IProgrammer;
 
+import java.io.IOException;
 import java.util.Objects;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Programmer extends Person implements IProgrammer{
     private int yearsOfExperience;
     private String favoriteLanguage;
     private String favoriteOS;
+    public static Logger logger = Logger.getLogger(Programmer.class.getName());
+    public FileHandler fh;
+
+    {
+        try {
+            fh = new FileHandler("src/homework4/readText/Logs.txt");
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     //Constructors
     public Programmer(String firstName, String lastName, String gender, int age, int yearsOfExperience, String favoriteLanguage, String favoriteOS) {
@@ -67,7 +82,7 @@ public class Programmer extends Person implements IProgrammer{
             this.favoriteLanguage = favoriteLanguage;
             this.favoriteOS = favoriteOS;
         }catch (Exception e){
-            System.out.println("Error in Programmer->ChangeInfo: "+e);
+            logger.warning("Error in Programmer->ChangeInfo: "+e);
         }
 
     }
@@ -97,14 +112,14 @@ public class Programmer extends Person implements IProgrammer{
     //Overriding interface methods
     @Override
     public void sayProgrammerQuote() {
-        System.out.println("Work smarter not harder!");
+        logger.info("Work smarter not harder!");
     }
     @Override
     public void eat() {
-        System.out.println("I like to eat vegetables!");
+        logger.info("I like to eat vegetables!");
     }
     @Override
     public void drink() {
-        System.out.println("I drink coffe!");
+        logger.info("I drink coffe!");
     }
 }

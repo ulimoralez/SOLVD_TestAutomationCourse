@@ -2,8 +2,22 @@ package homework4;
 
 import homework3.interfaces.IHuman;
 
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public final class Child extends Person implements IHuman {
+    public static Logger logger = Logger.getLogger(Child.class.getName());
+    private static FileHandler fh;
     static{
+        try {
+            fh = new FileHandler("src/homework4/readText/Logs.txt");
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         final int childAge = 7;
         String favouriteFood = "Pizza";
     }
@@ -19,19 +33,19 @@ public final class Child extends Person implements IHuman {
     //Methods and functions
     //Make a final method does not change anything because anyway this class can't be inherited
     final void sayHello(){
-        System.out.println("Hellooooooo!");
+        logger.info("Helloooo!");
     }
     public static void sayFAvouriteGame(){
-        System.out.println("My favourite game is Minecraft");
+        logger.info("My favourite game is Minecraft");
     }
 
     //Overriding interface functions
     @Override
     public void eat() {
-        System.out.println("I like apples!");
+        logger.info("I like apples!");
     }
     @Override
     public void drink() {
-        System.out.println("I drink orage juice!");
+        logger.info("I drink orage juice!");
     }
 }

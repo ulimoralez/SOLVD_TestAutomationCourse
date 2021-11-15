@@ -3,10 +3,14 @@ package homework4;
 import homework3.interfaces.IHuman;
 import homework3.interfaces.IPerson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Person implements IPerson, IHuman {
     private String firstName;
@@ -14,6 +18,18 @@ public class Person implements IPerson, IHuman {
     private String gender;
     private int age;
     static List<String> favouriteFood = new ArrayList<>();
+    public static Logger logger = Logger.getLogger(Person.class.getName());
+    public FileHandler fh;
+
+    {
+        try {
+            fh = new FileHandler("src/homework4/readText/Logs.txt");
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     //Constructors
     public Person(){
@@ -81,7 +97,7 @@ public class Person implements IPerson, IHuman {
     }
     public static void addFavouriteFood(String food){
         favouriteFood.add(food);
-        System.out.println(Arrays.toString(favouriteFood.toArray()));
+        logger.info(Arrays.toString(favouriteFood.toArray()));
     }
 
     //Overriding Object Methods
@@ -110,18 +126,18 @@ public class Person implements IPerson, IHuman {
     @Override
     public void sayHello(String firstName) {
         try {
-            System.out.println("Hello! My name is: "+firstName);
+            logger.info("Hello! My name is: "+firstName);
         }catch (Exception e){
-            System.out.println("Error in Person->sayHello: "+e);
+            logger.warning("Error in Person->sayHello: "+e);
         }
 
     }
     @Override
     public void eat() {
-        System.out.println("I eat any type of food");
+        logger.info("I eat any type of food");
     }
     @Override
     public void drink() {
-        System.out.println("I drink water");
+        logger.info("I drink water");
     }
 }

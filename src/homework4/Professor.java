@@ -2,10 +2,27 @@ package homework4;
 
 import homework3.interfaces.IProfessor;
 
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Professor extends Person implements IProfessor {
 
     private String studyArea;
     private String collegeName;
+    public static Logger logger = Logger.getLogger(Professor.class.getName());
+    public FileHandler fh;
+
+    {
+        try {
+            fh = new FileHandler("src/homework4/readText/Logs.txt");
+            logger.addHandler(fh);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     //Constructors
     public Professor() {
@@ -30,15 +47,15 @@ public class Professor extends Person implements IProfessor {
     @Override
     public void sayHello(String firstName) {
         try {
-            System.out.println("Hello! My name is: "+firstName);
+            logger.info("Hello! My name is: "+firstName);
         }catch (Exception e){
-            System.out.println("Error in Professor->sayHello: "+e);
+            logger.warning("Error in Professor->sayHello: "+e);
         }
     }
 
     @Override
     public void drink() {
-        System.out.println("I like to drink tea");
+        logger.info("I like to drink tea");
     }
     @Override
     public String themeToTeach() {
