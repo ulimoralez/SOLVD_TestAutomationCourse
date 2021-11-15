@@ -3,6 +3,9 @@ package homework4;
 import homework3.interfaces.IHuman;
 import homework3.interfaces.IPerson;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class Person implements IPerson, IHuman {
@@ -10,6 +13,7 @@ public class Person implements IPerson, IHuman {
     private String lastName;
     private String gender;
     private int age;
+    static List<String> favouriteFood = new ArrayList<>();
 
     //Constructors
     public Person(){
@@ -23,12 +27,10 @@ public class Person implements IPerson, IHuman {
         this(firstName, lastName);
         this.gender = gender;
     }
-
     public Person(String firstName, String lastName, String gender, int age) {
         this(firstName, lastName, gender);
         this.age = age;
     }
-
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,6 +78,10 @@ public class Person implements IPerson, IHuman {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+    }
+    public static void addFavouriteFood(String food){
+        favouriteFood.add(food);
+        System.out.println(Arrays.toString(favouriteFood.toArray()));
     }
 
     //Overriding Object Methods
