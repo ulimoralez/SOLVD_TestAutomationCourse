@@ -1,4 +1,4 @@
-package homework5;
+package homework5.classes;
 
 import homework3.interfaces.IHuman;
 import homework3.interfaces.IPerson;

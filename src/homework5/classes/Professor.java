@@ -1,4 +1,4 @@
-package homework5;
+package homework5.classes;
 
 import homework3.interfaces.IProfessor;
 import homework5.exceptions.InvalidProfessorID;
