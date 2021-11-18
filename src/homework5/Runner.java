@@ -2,6 +2,7 @@ package homework5;
 
 import homework4.runner;
 import homework5.classes.*;
+import homework5.customLinkedList.GenericLinkedList;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -40,6 +41,7 @@ public class Runner {
         student.changeInfo("Ulises","Moralez", 21);
 
         //List -> ArrayList
+        System.out.println("\n\nArrayList");
         ArrayList<Person> peopleList = new ArrayList<Person>();
         //Adding people in the arrayList
         peopleList.add(person);
@@ -52,6 +54,7 @@ public class Runner {
         System.out.println("Get the index 1 of peopleList "+peopleList.get(1));
 
         //Set -> SortedSet -> TreeSet
+        System.out.println("\n\nTreeSet");
         SortedSet<String> countries = new TreeSet<String>();
         countries.add("India");
         countries.add("Argentina");
@@ -65,6 +68,7 @@ public class Runner {
         countries.first();
 
         //Map -> LinkedHashMap
+        System.out.println("\n\nLinkedHashMap");
         Map<String, Person> countryOfPeople = new LinkedHashMap<>();
         countryOfPeople.put("Argentina",peopleList.get(0));
         countryOfPeople.put("Belarus",peopleList.get(1));
@@ -73,6 +77,7 @@ public class Runner {
         System.out.println("Size of countryOfPeople: "+countryOfPeople.size());
 
         //Queue -> LinkedList
+        System.out.println("\n\nQueue");
         Queue<Student> groupOfStudents = new LinkedList<>();
         groupOfStudents.offer(student1);
         groupOfStudents.offer(student3);
@@ -82,6 +87,7 @@ public class Runner {
         System.out.println("Return the first element in the queue: "+groupOfStudents.peek());
 
         //List -> LinkedList
+        System.out.println("\n\nLinkedList");
         LinkedList<Professor> groupOfProfessors = new LinkedList<>();
         groupOfProfessors.add(professor1);
         groupOfProfessors.add(professor2);
@@ -90,5 +96,18 @@ public class Runner {
         System.out.println("Get the size of groupOfProffesors: "+groupOfProfessors.size());
         System.out.println("Get the first element in groupOfProffesors: "+groupOfProfessors.getFirst());
         System.out.println("Get the second element in groupOfProffesors: "+groupOfProfessors.get(1));
+
+        //List -> GenericLinkedList
+        System.out.println("\n\nGenericLinkedList");
+        GenericLinkedList<String> beautifulNames = new GenericLinkedList<>();
+        beautifulNames.insert(person1.getFirstName());
+        beautifulNames.insert(person2.getFirstName());
+        beautifulNames.insert(student2.getFirstName());
+        beautifulNames.insert(professor2.getFirstName());
+        System.out.println("Before deleting the 0 index: ");
+        beautifulNames.show();
+        beautifulNames.deleteAt(0);
+        System.out.println("After deleting the 0 index: ");
+        beautifulNames.show();
     }
 }
