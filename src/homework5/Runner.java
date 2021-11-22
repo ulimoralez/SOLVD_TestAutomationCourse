@@ -107,7 +107,7 @@ public class Runner {
         System.out.println("Before deleting the 0 index: ");
         beautifulNames.show();
         beautifulNames.deleteAt(0);
-        System.out.println("After deleting the 0 index: ");
+        System.out.println("After deleting the 0 index: " );
         beautifulNames.show();
     }
 }
